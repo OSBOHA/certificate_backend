@@ -1,0 +1,22 @@
+[0;1;32m●[0m supervisor.service - Supervisor process control system for UNIX
+     Loaded: loaded (]8;;file://ubuntu-s-1vcpu-1gb-intel-sfo3-01/lib/systemd/system/supervisor.service/lib/systemd/system/supervisor.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Sun 2022-12-18 21:01:46 UTC; 3 months 27 days ago
+       Docs: ]8;;http://supervisord.orghttp://supervisord.org]8;;
+   Main PID: 362054 (supervisord)
+      Tasks: 2 (limit: 1116)
+     Memory: 50.9M
+        CPU: 1d 16h 52min 421ms
+     CGroup: /system.slice/supervisor.service
+             ├─[0;38;5;245m 362054 /usr/bin/python3 /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf[0m
+             └─[0;38;5;245m1003610 php /var/www/html/osboha-certificates-backend/artisan queue:work database --sleep=3 --tries=3 --max-time=3600[0m
+
+Apr 16 11:18:17 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 11:18:17,478 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+Apr 16 12:18:16 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 12:18:16,622 INFO exited: laravel-worker_00 (exit status 0; expected)
+Apr 16 12:18:17 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 12:18:17,634 INFO spawned: 'laravel-worker_00' with pid 1000362
+Apr 16 12:18:19 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 12:18:19,289 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+Apr 16 13:18:20 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 13:18:20,695 INFO exited: laravel-worker_00 (exit status 0; expected)
+Apr 16 13:18:21 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 13:18:21,709 INFO spawned: 'laravel-worker_00' with pid 1001925
+Apr 16 13:18:23 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 13:18:23,337 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+Apr 16 14:18:50 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 14:18:50,911 INFO exited: laravel-worker_00 (exit status 0; expected)
+Apr 16 14:18:51 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 14:18:51,972 INFO spawned: 'laravel-worker_00' with pid 1003610
+Apr 16 14:18:53 ubuntu-s-1vcpu-1gb-intel-sfo3-01 supervisord[362054]: 2023-04-16 14:18:53,015 INFO success: laravel-worker_00 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
