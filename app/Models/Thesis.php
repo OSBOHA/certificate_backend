@@ -22,7 +22,7 @@ class Thesis extends Model
         'user_book_id'
     ];
 
-    protected $with = array('photos');
+    protected $with = array('reviewer','auditor');
 
 
     public function user_book(){

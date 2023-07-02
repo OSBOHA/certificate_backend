@@ -39,7 +39,7 @@ class BooksController extends BaseController
             $query->where('status', '!=', 'finished')
             ->where('status', '!=', 'rejected')
             ->orWhereNull('status');
-        })->first();
+        })->get();
         return $this->sendResponse($already_have_one, "Already Have One");
     }
     public function bookByName($name)

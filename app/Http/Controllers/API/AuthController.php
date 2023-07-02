@@ -30,6 +30,7 @@ class AuthController extends BaseController
             $success['role'] = $user->getRoleNames();
             $success['id'] = $user->id;
             $success['active'] = $user->isActive;
+
             return $this->sendResponse($success, 'User Login Successfully!');
         } else {
             return $this->sendError('Unauthorised', ['error', 'Unauthorised']);

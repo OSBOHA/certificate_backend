@@ -60,8 +60,11 @@ class OneUserSeeder extends Seeder
         $book = Book::create([
             'name' => Str::random(10) ,
             'pages' => rand(100, 1000),
+            'start_page'=>1,
+            "end_page"=>300,    
             'section_id' => rand(1, 10),
             'level_id' =>rand(1, 3),
+            'language_id'=>1
         ]);
 
         ## User_Book ##

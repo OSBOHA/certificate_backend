@@ -159,20 +159,18 @@ class UserBookController extends BaseController
 
     public function destroy($id)
     {
-   		     $user_id = Auth::id();
-
-        $userBook = UserBook::where('book_id' , '=' ,$id)->where('user_id','=',$user_id)->first();
+        $userBook = UserBook::find($id);
         if (!$userBook) {
             return $this->sendError('UserBook does not exist');
         }
         
-        if (!is_null($userBook->status)) {
+        if (is_null($userBook->status)) {
+            $userBook->delete();
+            return $this->sendResponse(null, 'UserBook deleted successfully!');
+        }
+        else{
             return $this->sendError('UserBook status is not null');
         }
-        
-        $userBook->delete();
-        
-        return $this->sendResponse(null, 'UserBook deleted successfully!');
     }
 
 

@@ -24,7 +24,12 @@ class BookSeeder extends Seeder
                     'name' => $data['0'],
                     'level_id' => $data['1'],
                     'section_id' => $data['2'],
-                    'pages' => $data['3']
+                    'pages' => $data['3'],
+                    'start_page'=>1,
+                    "end_page"=>300,            
+                    'language_id' => 1,
+                    "section_id" => 1,
+
                 ]);
             }
             $firstline = false;

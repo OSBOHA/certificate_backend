@@ -17,6 +17,8 @@ return new class extends Migration
             $table->bigIncrements('id')->unsigned()->index();
             $table->text('name');
             $table->integer('pages');
+            $table->integer('end_page');
+            $table->integer('start_page');
             $table->bigInteger('language_id');
             $table->bigInteger("section_id")->unsigned()->index();
             $table->foreign("section_id")->references("id")->on("section");

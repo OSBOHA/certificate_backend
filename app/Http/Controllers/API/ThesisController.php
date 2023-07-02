@@ -39,7 +39,6 @@ class ThesisController extends BaseController
             "ending_page" => 'required',
             "starting_page" => 'required',
             "user_book_id" => 'required',
-            //    "image" => "required|image|mimes:png,jpg,jpeg,gif,svg|max:2048",
         ]);
 
         if ($validator->fails()) {
@@ -49,12 +48,6 @@ class ThesisController extends BaseController
 
         try {
             $newthesis = Thesis::create($input);
-
-            if (!is_null(($request->file('images')))) {
-                foreach ($request->file('images') as $image) {
-                    $this->createThesisMedia($image, $newthesis->id);
-                }
-            }
 
         } catch (\Illuminate\Database\QueryException $e) {
             return $this->sendError($e, 'User Book does not exist');

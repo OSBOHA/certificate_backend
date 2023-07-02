@@ -20,8 +20,8 @@ class Question extends Model
         "ending_page"
     ];
 
+    protected $with = array('quotation','reviewer','auditor');
 
-    protected $with = array('quotation');
 
     public function user_book(){
         return $this->belongsTo(UserBook::class,'user_book_id');
