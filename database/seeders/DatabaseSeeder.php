@@ -19,15 +19,15 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            RolesSeeder::class,
-            LevelSeeder::class,
-            SectionSeeder::class,
-            BookSeeder::class,
-            OneUserSeeder::class,
-            FqasSeeder::class,
-            UsersTableSeeder::class,
-            User_BookSeeder::class,
-            ThesisSeeder::class
+            // RolesSeeder::class,
+            // LevelSeeder::class,
+            // SectionSeeder::class,
+            // BookSeeder::class,
+            // OneUserSeeder::class,
+            // FqasSeeder::class,
+            // UsersTableSeeder::class,
+            // User_BookSeeder::class,
+            // ThesisSeeder::class
         ]);
     }
 }

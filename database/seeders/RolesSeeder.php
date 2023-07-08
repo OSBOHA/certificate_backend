@@ -20,6 +20,7 @@ class RolesSeeder extends Seeder
         $super_reviewer = Role::create(['name' => 'super_reviewer','guard_name' => 'api']);
         $auditer = Role::create(['name' => 'auditer','guard_name'=>'api']);
         $super_auditer = Role::create(['name' => 'super_auditer','guard_name'=>'api']);
+        $super_auditer = Role::create(['name' => 'user_accept','guard_name'=>'api']);
 
 
     }
