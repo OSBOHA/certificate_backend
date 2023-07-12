@@ -31,7 +31,7 @@ trait MediaTraits
     {
 
         $randomString = Str::random(10);
-	$path =Storage::put("/var/www/html/osboha-certificates-backend/storage/app/image", $media);
+	$path =Storage::put("/var/www/html/backend/storage/app/image", $media);
         $user->picture = $path;
         $user->save();
         return $user;

@@ -16,22 +16,22 @@ class InstallFonts extends BaseController
         }else{
         dd('File does not exists.');
         }
-        // $path = '/var/www/html/osboha-certificates-backend/vendor/tecnickcom/tcpdf/fonts/arial.ttf';
+        // $path = '/var/www/html/backend/vendor/tecnickcom/tcpdf/fonts/arial.ttf';
         // $test = TCPDF_FONTS::addTTFfont($path, 'TrueTypeUnicode', '', 32);
         // print_r($test);
 
 
-        // $path = '/var/www/html/osboha-certificates-backend/vendor/tecnickcom/tcpdf/fonts/arialbd.ttf';
+        // $path = '/var/www/html/backend/vendor/tecnickcom/tcpdf/fonts/arialbd.ttf';
         // $test = TCPDF_FONTS::addTTFfont($path, 'TrueTypeUnicode', '', 32);
         // print_r($test);
 
 
-        // $path = '/var/www/html/osboha-certificates-backend/vendor/tecnickcom/tcpdf/fonts/calibri.ttf';
+        // $path = '/var/www/html/backend/vendor/tecnickcom/tcpdf/fonts/calibri.ttf';
         // $test = TCPDF_FONTS::addTTFfont($path, 'TrueTypeUnicode', '', 32);
         // print_r($test);
 
 
-        // $path = '/var/www/html/osboha-certificates-backend/vendor/tecnickcom/tcpdf/fonts/calibrib.ttf';
+        // $path = '/var/www/html/backend/vendor/tecnickcom/tcpdf/fonts/calibrib.ttf';
         // $test = TCPDF_FONTS::addTTFfont($path, 'TrueTypeUnicode', '', 32);
         // print_r($test);
     }

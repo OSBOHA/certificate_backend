@@ -102,7 +102,7 @@ class PDFController extends BaseController
         PDF::SetAutoPageBreak(false, 0);
 
         // set bacground image
-        $img_file = '/var/www/html/osboha-certificates-backend/public/asset/images/certTempWthiSign.jpg';
+        $img_file = '/var/www/html/backend/public/asset/images/certTempWthiSign.jpg';
         // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
         PDF::Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 
@@ -192,7 +192,7 @@ class PDFController extends BaseController
         $auto_page_break = PDF::getAutoPageBreak();
         PDF::SetAutoPageBreak(false, 0);
 
-        $img_file = '/var/www/html/osboha-certificates-backend/public/asset/images/certTemp.jpg';
+        $img_file = '/var/www/html/backend/public/asset/images/certTemp.jpg';
 
         PDF::Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 
