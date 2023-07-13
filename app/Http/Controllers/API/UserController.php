@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 use App\Traits\MediaTraits;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends BaseController
 {
@@ -82,7 +83,7 @@ class UserController extends BaseController
       $user->picture = $userImage;
       $user->save();
     } catch (\Error $e) {
-      return $this->sendError($e);
+      Log::error($e);
     }
   }
 

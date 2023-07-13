@@ -6,8 +6,9 @@ use App\Models\Photos;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\Storage;
 
 
 trait MediaTraits
@@ -31,7 +32,7 @@ trait MediaTraits
     {
 
         $randomString = Str::random(10);
-	$path =Storage::put("/var/www/html/backend/storage/app/image", $media);
+        $path = Storage::put("/var/www/html/backend/storage/app/image", $media);
         $user->picture = $path;
         $user->save();
         return $user;
@@ -90,20 +91,23 @@ trait MediaTraits
         Storage::delete($path);
     }
 
-    function createMedia($media){
-        $imageName = uniqid('osboha_').'.'. $media->extension();
-        $media->move(public_path('asset/images/temMedia'), $imageName);
-        // return media name
-        return $imageName;
+    function createMedia($media)
+    {
+        try {
+            $imageName = uniqid('osboha_') . '.' . $media->extension();
+            $media->move(public_path('asset/images/temMedia'), $imageName);
+            // return media name
+            return $imageName;
+        } catch (\Error $e) {
+            Log::error($e);
+        }
     }
     function deleteTempMedia($id)
     {
         $user = User::find($id);
         //delete current media    
         File::delete('asset/images/temMedia/' . $user->picture);
-        $user->picture=null;
+        $user->picture = null;
         $user->save();
     }
-
-
 }
