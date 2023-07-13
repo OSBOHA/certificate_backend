@@ -103,7 +103,6 @@ class PDFController extends BaseController
 
         // set bacground image
         $img_file = 'https://www.eligible.osboha180.com/api/asset/images/certTempWthiSign.jpg';
-
         // Image($file, $x='', $y='', $w=0, $h=0, $type='', $link='', $align='', $resize=false, $dpi=300, $palign='', $ismask=false, $imgmask=false, $border=0, $fitbox=false, $hidden=false, $fitonpage=false)
         PDF::Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 
@@ -128,10 +127,9 @@ class PDFController extends BaseController
 
         ###################### START GRNRRAL INFORMATION ###################### 
         foreach ($fullCertificate as $part) {
-            if (strlen($part['generalInformation']->summary) > 350) {
+            if (strlen($part['generalInformation']->summary) > 1700) {
                 $summaryWords = explode(' ', $part['generalInformation']->summary);
-                $pages = round(count($summaryWords) / 300);
-                $pages = round($pages);
+                $pages = floor(count($summaryWords) / 300);
                 $summary = implode(" ", array_slice($summaryWords, 0, 200));
                 $this->addPage();
                 PDF::writeHTML(view('certificate.generalInfo', ['summary' => $summary, 'certificate' => $part['generalInformation'], 'textDegree' => $this->textDegree($part['generalInformation']->degree)])->render(), true, false, true, false, '');
@@ -139,16 +137,13 @@ class PDFController extends BaseController
                 $start = 200;
                 $length = 350;
 
-                for ($i = 2; ($i <= $pages + 1) && ($start < count($summaryWords)); $i++) {
+                for ($i = 2; $i <= $pages + 1; $i++) {
                     $summary = implode(" ", array_slice($summaryWords, $start, $length));
 
                     $this->addPage();
                     PDF::writeHTML(view('certificate.generalSummary', ['summary' => $summary])->render(), true, false, true, false, '');
                     $start = $start + 350;
                 }
-            } else {
-                $this->addPage();
-                PDF::writeHTML(view('certificate.generalInfo', ['summary' => $part['generalInformation']->summary, 'certificate' => $part['generalInformation'], 'textDegree' => $this->textDegree($part['generalInformation']->degree)])->render(), true, false, true, false, '');
             }
         }
         ###################### END GRNRRAL INFORMATION ###################### 
@@ -193,7 +188,7 @@ class PDFController extends BaseController
         $auto_page_break = PDF::getAutoPageBreak();
         PDF::SetAutoPageBreak(false, 0);
 
-        $img_file = '/var/www/html/backend/asset/images/certTemp.jpg';
+        $img_file = 'https://www.eligible.osboha180.com/api/asset/images/certTemp.jpg';
 
         PDF::Image($img_file, 0, 0, 210, 297, '', '', '', false, 300, '', false, false, 0);
 
