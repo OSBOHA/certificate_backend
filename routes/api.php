@@ -123,7 +123,7 @@ Route::group(['prefix' => 'users'], function () {
     Route::get('/list/un-active', [UserController::class, 'listUnactiveUser'])->middleware(['auth:api' ,'role:admin|user_accept']);
     Route::get('/list/un-active-reviwers-auditors', [UserController::class, 'listUnactiveReviwers'])->middleware(['auth:api' ,'role:admin']);
     Route::post('/upload-user_book',[UserController::class, 'uploaduser_book'])->middleware((['auth:api']));
-    Route::post('/update-info',[UserController::class, 'updateInfo'])->middleware((['auth:api',"isActive"]));
+    Route::post('/update-info',[UserController::class, 'updateInfo']);
     Route::post('/deactive-user',[UserController::class, 'deactivate'])->middleware((['auth:api']));
 
 });
