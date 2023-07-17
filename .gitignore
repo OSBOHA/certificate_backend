@@ -4,6 +4,7 @@
 /public/storage
 /public/assets/images
 /public/assets
+/public/assets/images/temMedia
 /storage/*.key
 /vendor
 .env
