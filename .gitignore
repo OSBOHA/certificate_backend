@@ -2,9 +2,8 @@
 /public/build
 /public/hot
 /public/storage
-/public/assets/images
 /public/assets
-/public/assets/images/temMedia
+/public/asset/images/temMedia
 /storage/*.key
 /vendor
 .env
