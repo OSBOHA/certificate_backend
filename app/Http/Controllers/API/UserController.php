@@ -24,6 +24,11 @@ class UserController extends BaseController
   use MediaTraits;
 
 
+  /**
+   * Get all users
+   * @return users;
+   */
+
   public function index()
   {
 
@@ -31,6 +36,19 @@ class UserController extends BaseController
     return $this->sendResponse($users, "Users");
   }
 
+  /**
+   * Get users by name.
+   * 
+   * @param  user name
+   * @return users;
+   */
+
+  public function searchByName($name)
+  {
+    $users = User::where('name', 'like', '%' . $name . '%')
+      ->get();
+    return $this->sendResponse($users, "Users");
+  }
 
   public function store(Request $request)
   {
@@ -77,7 +95,7 @@ class UserController extends BaseController
       }
 
 
-      $user = User::where('id', Auth::id())->update(['name' => $request->name,'is_active' => 0]);
+      $user = User::where('id', Auth::id())->update(['name' => $request->name, 'is_active' => 0]);
       $user = User::where('id', Auth::id())->first();
       $userImage = $this->createMedia($request->file('image'));
       $user->picture = $userImage;
@@ -87,6 +105,26 @@ class UserController extends BaseController
     }
   }
 
+
+  public function updateName(Request $request)
+  {
+    try {
+      $validator = Validator::make($request->all(), [
+        "name" => "required",
+        "id" => "required",
+      ]);
+
+      if ($validator->fails()) {
+        return $this->sendError($validator->errors());
+      }
+
+
+      $user = User::where('id', $request->id)->update(['name' => $request->name]);
+      return $this->sendResponse($user, "تم التعديل");
+    } catch (\Error $e) {
+      Log::error($e);
+    }
+  }
 
 
 
@@ -217,7 +255,7 @@ class UserController extends BaseController
     return $this->sendResponse($user, 'user activated!');
   }
 
-  
+
 
 
   public function registerAdmin(Request $request)
@@ -249,25 +287,24 @@ class UserController extends BaseController
         return $this->sendError('User already exist');
       }
     }
-    }
+  }
 
- 
 
-      
 
-    public function image(Request $request)
-    {
 
-if( isset($_GET['fileName'])){
-      $path = public_path().'/asset/images/temMedia/'.$_GET['fileName'];
-      return response()->download($path, $_GET['fileName']);        
-    }
-    else{
+
+  public function image(Request $request)
+  {
+
+    if (isset($_GET['fileName'])) {
+      $path = public_path() . '/asset/images/temMedia/' . $_GET['fileName'];
+      return response()->download($path, $_GET['fileName']);
+    } else {
       return $this->sendError('file nout found');
     }
-    }
+  }
 
- 
+
 
 
   public function getUserStatistics()
