@@ -19,15 +19,19 @@ class GeneralInformations extends Model
         'user_book_id'
     ];
 
-    public function user_book(){
-        return $this->belongsTo(UserBook::class,'user_book_id');
-    }
-    function reviewer(){
- 
-        return $this->belongsTo(User::class);
-    }
-    public function auditor(){
-        return $this->belongsTo(User::class);
-    }
+    protected $with = array('reviewer', 'auditor');
 
+    public function user_book()
+    {
+        return $this->belongsTo(UserBook::class, 'user_book_id');
+    }
+    function reviewer()
+    {
+
+        return $this->belongsTo(User::class);
+    }
+    public function auditor()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
